@@ -691,6 +691,24 @@ footer {
     height: 100%;
     object-fit: cover;
 }
+/* --- CORREÇÃO 1: DEGRADÊ PARA LEITURA NA CAPA --- */
+/* Cria uma camada escura transparente sobre a imagem */
+.project-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%; /* Cobre os 60% inferiores da imagem */
+    /* Degradê do transparente (topo) para preto suave (embaixo) */
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+    z-index: 1; /* Fica acima da imagem */
+}
+
+/* Garante que o texto fique EM CIMA do degradê */
+.project-title-overlay {
+    z-index: 2; 
+}
 
 .project-title-overlay {
     position: absolute;
@@ -930,4 +948,60 @@ footer {
     .featured {
         grid-column: span 1;
     }
+}
+/* --- CORREÇÃO 2: TEXTO MAIS DELICADO (Home e Detalhes) --- */
+
+/* Na HOME: Limita a largura do texto descritivo dos projetos */
+.proj-text p {
+    max-width: 450px; /* O texto nunca vai passar dessa largura */
+    line-height: 1.8; /* Mais respiro entre as linhas */
+    color: #666; /* Um cinza um pouco mais suave que o preto */
+}
+
+/* Na PÁGINA DE DETALHES: Estreita a coluna central de texto */
+.narrative-content {
+    max-width: 680px; /* Reduzi de 800px para 680px para ficar mais fino */
+    margin: 0 auto;
+}
+/* Aumenta o respiro do texto corrido */
+.narrative-body p {
+    line-height: 2; /* Bem espaçado, super elegante */
+    font-size: 1.05rem;
+    color: #555;
+}
+/* --- CORREÇÃO 3: IMAGENS CONTROLADAS --- */
+
+/* Imagens de largura total na página de detalhes */
+.full-width {
+    width: 100%;
+    height: auto;
+    max-height: 85vh; /* Limita a 85% da altura da tela */
+    object-fit: cover; /* Corta a imagem se precisar, para não esticar */
+    margin-bottom: 4rem; /* Mais espaço entre as fotos */
+}
+
+/* As duas imagens lado a lado (Díptico) */
+.diptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; /* Aumentei o espaço entre elas */
+    margin-bottom: 4rem;
+}
+
+.diptych img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Proporção mais alongada e elegante (retrato) */
+    aspect-ratio: 3/4; 
+}
+/* --- CORREÇÃO 4: PRÓXIMO PROJETO SUTIL --- */
+
+.next-project h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem; /* Reduzi de 3rem para 2rem (bem menor) */
+    font-weight: 300; /* Peso Light (mais fino e delicado) */
+    margin-top: 1.5rem;
+    color: var(--text-color);
+    letter-spacing: -0.02em; /* Letras levemente mais juntas para elegância */
 }
