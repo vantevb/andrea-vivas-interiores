@@ -675,3 +675,259 @@ footer {
     border-bottom: 1px solid #eee;
     font-size: 0.95rem;
 }
+
+/* --- PÁGINA DE DETALHES DO PROJETO --- */
+
+/* Capa */
+.project-hero {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Altura imponente */
+    overflow: hidden;
+}
+
+.project-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-title-overlay {
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.project-title-overlay h1 {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.project-title-overlay .location {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.9rem;
+}
+
+/* Narrativa (Texto) */
+.project-narrative {
+    padding: 6rem 2rem;
+    background-color: #fff;
+}
+
+.narrative-content {
+    max-width: 800px; /* Texto estreito para leitura confortável */
+    margin: 0 auto;
+}
+
+.narrative-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+}
+
+.narrative-header .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.lead-text {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.4;
+}
+
+.narrative-body p {
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.project-specs {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Galeria Interna */
+.project-full-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 6rem;
+}
+
+.full-width {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.diptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.diptych img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/5; /* Formato retrato elegante */
+}
+
+/* Navegação Próximo Projeto */
+.next-project {
+    background-color: #F5F5F0;
+    padding: 6rem 0;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.next-project:hover {
+    background-color: #EAEAE5;
+}
+
+.next-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.next-project h2 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .project-title-overlay h1 { font-size: 2.5rem; }
+    .project-title-overlay { left: 1.5rem; bottom: 2rem; }
+    .diptych { grid-template-columns: 1fr; }
+}
+/* =========================================
+   CORREÇÕES MOBILE (Responsividade)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. TRAVAR ROLAGEM HORIZONTAL */
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden; /* Evita que o site "dance" para os lados */
+    }
+
+    /* 2. CABEÇALHO (Menu Empilhado) */
+    .header {
+        padding: 1rem 0;
+    }
+    .nav {
+        flex-direction: column; /* Coloca Logo em cima, Menu embaixo */
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    .nav-list {
+        gap: 1rem;
+        flex-wrap: wrap; /* Permite que os itens quebrem linha se precisar */
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
+    .nav-list a {
+        font-size: 0.75rem; /* Texto um pouco menor para caber */
+    }
+    .monogram-side {
+        font-size: 3.5rem; /* Logo um pouco menor */
+    }
+
+    /* 3. PROJETOS (Empilhar em vez de lado a lado) */
+    .project-row, 
+    .project-row.reverse {
+        grid-template-columns: 1fr; /* Uma coluna só */
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4rem;
+    }
+
+    /* Garante que a foto fique sempre em cima do texto no celular */
+    .project-row.reverse .proj-img { order: -1; }
+    .project-row.reverse .proj-text { order: 1; padding-left: 1.5rem; }
+
+    .proj-img img {
+        height: 300px; /* Altura menor para não ocupar a tela toda */
+    }
+    .proj-text {
+        padding: 2rem 1.5rem; /* Mais espaço nas laterais */
+    }
+
+    /* 4. SOBRE (Ajuste de Texto) */
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 0 1.5rem;
+    }
+    .about-text h2 {
+        font-size: 2.2rem; /* Título menor */
+    }
+    .about-image {
+        order: -1; /* Sobe a foto da Andrea para antes do texto */
+        margin-bottom: 1rem;
+    }
+
+    /* 5. SERVIÇOS (Divisão Residencial/Comercial) */
+    .service-split {
+        flex-direction: column; /* Um embaixo do outro */
+        gap: 3rem;
+    }
+    .vertical-line {
+        display: none; /* Esconde a linha divisória no celular */
+    }
+    .service-col {
+        padding: 0 1.5rem;
+    }
+
+    /* 6. TÍTULOS E ESPAÇAMENTOS GERAIS */
+    .section-header {
+        display: block; /* Desfaz o grid do título */
+        margin-bottom: 2rem;
+        padding: 0 1.5rem;
+    }
+    .section-header h2 {
+        text-align: left;
+        font-size: 2.5rem;
+    }
+    
+    /* Mosaico de Fotos */
+    .mosaic-grid {
+        column-count: 1; /* Uma foto por vez */
+    }
+    .gallery {
+        grid-template-columns: 1fr; /* Projetos da home em 1 coluna */
+    }
+    .featured {
+        grid-column: span 1;
+    }
+}
