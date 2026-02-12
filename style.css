@@ -1,0 +1,677 @@
+/* --- VARIÁVEIS & RESET (A Base do Design System) --- */
+:root {
+    --bg-color: #FAFAF9; /* Off-white quente (papel) */
+    --text-color: #1A1A1A; /* Preto Carvão (suave) */
+    --accent-color: #8C8C8C; /* Cinza médio para detalhes */
+    
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans); /* Texto padrão é técnico */
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll lateral indesejado */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+/* --- HEADER NOVO (Logo Esq | Menu Dir) --- */
+.header {
+    padding: 1.5rem 0; /* Padding vertical apenas */
+    position: sticky;
+    top: 0;
+    background-color: rgba(250, 250, 249, 0.98);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between; /* Joga um pra cada ponta */
+    align-items: center;
+    padding: 0 4rem; /* Padding lateral do container */
+}
+
+/* --- LOGO (Estilo "Tradição Serifada") --- */
+.logo-link {
+    display: flex;
+    align-items: center; /* Alinha o monograma e o texto verticalmente no centro */
+    gap: 1.5rem; /* Espaço entre o "AV" e o nome */
+    text-decoration: none; /* Remove sublinhado do link */
+    color: var(--text-color);
+}
+
+.monogram-side {
+    font-family: var(--font-serif);
+    font-size: 4.5rem; /* Monograma bem grande e imponente */
+    line-height: 1; /* Remove espaço extra acima/abaixo */
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+/* Contêiner para "Andrea Vivas" e "INTERIORES" */
+.logo-text-stack {
+    display: flex;
+    flex-direction: column; /* Um embaixo do outro */
+    align-items: center; /* Centraliza "INTERIORES" em relação a "Andrea Vivas" */
+}
+
+.logo-text-stack h1 {
+    font-family: var(--font-serif); /* Usa a fonte serifada correta */
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 0.3rem; /* Espaço pequeno até o "INTERIORES" */
+    text-transform: none; /* Mantém maiúsculas/minúsculas como escrito */
+}
+
+.logo-text-stack .subtitle {
+    font-family: var(--font-sans); /* Fonte técnica para o subtítulo */
+    font-size: 0.65rem;
+    letter-spacing: 0.35em; /* Espaçamento generoso entre letras */
+    color: var(--accent-color);
+    text-transform: uppercase;
+    display: block;
+    /* O align-items: center do pai já centraliza, mas isso garante */
+    text-align: center;
+}
+.nav-list {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-list a {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+}
+
+.btn-outline {
+    border: 1px solid var(--text-color);
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    width: 100%;
+    height: 90vh; /* Ocupa quase a tela toda */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4rem;
+}
+
+.hero-image-container {
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+    /* Efeito sutil de moldura */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a foto preencha sem distorcer */
+    /* Animação suave de entrada (Zoom lento) */
+    animation: slowZoom 10s infinite alternate; 
+}
+
+.hero-text {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+/* --- INTRODUÇÃO --- */
+.intro {
+    padding: 8rem 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.intro h2 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.intro .italic {
+    font-style: italic;
+    font-family: var(--font-serif);
+}
+
+.intro p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    color: #4a4a4a;
+}
+
+.btn-minimal {
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 5px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+footer {
+    text-align: center;
+    padding: 4rem;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* --- RESPONSIVIDADE (Mobile) --- */
+@media (max-width: 768px) {
+    .header { padding: 1.5rem; }
+    .nav { flex-direction: column; gap: 1.5rem; }
+    .nav-list { gap: 1.5rem; font-size: 0.75rem; }
+    .hero { padding: 0 1.5rem; height: auto; min-height: 80vh; }
+    .hero-image-container { height: 50vh; margin-top: 2rem;}
+    .intro h2 { font-size: 2rem; }
+}
+
+/* --- GALERIA DE PROJETOS --- */
+.projects-section {
+    padding: 4rem 4rem 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- CABEÇALHO DA SEÇÃO (Alinhado com a Imagem) --- */
+.section-header {
+    /* O Segredo: Usar o mesmo Grid do projeto */
+    display: grid;
+    /* 1.2fr para o lado da imagem (igual ao projeto) | 0.8fr para o resto */
+    grid-template-columns: 1.2fr 0.8fr; 
+    /* Gap precisa ser igual ao do projeto para alinhar as margens */
+    gap: 0; 
+    margin-bottom: 1rem; /* Espaço entre o título e a foto */
+}
+
+.section-header h2 {
+    /* Centraliza o texto DENTRO da coluna de 1.2fr (a coluna da imagem) */
+    text-align: center; 
+    
+    /* Estilos da fonte que já definimos */
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--text-color);
+    text-transform: none;
+}
+
+/* --- RESPONSIVIDADE (Celular) --- */
+/* No celular, como tudo vira uma coluna só, centralizamos na tela toda */
+@media (max-width: 768px) {
+    .section-header {
+        display: block; /* Desfaz o grid */
+        text-align: center;
+    }
+    .section-header h2 {
+        text-align: center;
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colunas iguais */
+    gap: 4rem 2rem; /* Espaço entre as fotos (Vertical Horizontal) */
+}
+
+/* O "Pulo do Gato": O primeiro item ocupa as 2 colunas */
+.featured {
+    grid-column: span 2; 
+}
+
+.project-card {
+    cursor: pointer;
+}
+
+.image-wrapper {
+    overflow: hidden;
+    margin-bottom: 1rem;
+    /* Proporção 4:3 para as fotos (formato clássico de foto) */
+    aspect-ratio: 4/3; 
+}
+
+/* Ajuste para a foto destaque ficar mais "panorâmica" */
+.featured .image-wrapper {
+    aspect-ratio: 16/9;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease; /* Zoom lento */
+    filter: grayscale(20%); /* Tira um pouco da saturação para ficar "chique" */
+}
+
+.project-card:hover img {
+    transform: scale(1.03); /* Zoom in leve */
+    filter: grayscale(0%); /* Volta a cor original */
+}
+
+.project-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+}
+
+.project-info p {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+}
+
+.view-all {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .projects-section { padding: 2rem 1.5rem; }
+    .gallery { grid-template-columns: 1fr; } /* Vira 1 coluna só */
+    .featured { grid-column: span 1; } /* Perde o destaque lateral */
+}
+/* --- SERVIÇOS --- */
+.services-section {
+    padding: 6rem 2rem;
+    background-color: #F5F5F0; /* Um tom levemente mais escuro que o fundo geral para separar */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-item {
+    padding: 2rem 0;
+    border-top: 1px solid rgba(0,0,0,0.1); /* Linha fina em cima */
+}
+
+.service-number {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: #D4D4D4; /* Número bem clarinho, quase invisível */
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.service-item h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.service-item p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* --- RODAPÉ (FOOTER) --- */
+.footer-main {
+    background-color: #1A1A1A; /* Fundo escuro */
+    color: #FAFAF9; /* Texto claro */
+    padding: 6rem 2rem 2rem 2rem;
+    text-align: center;
+}
+
+.footer-brand h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.footer-brand .subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.footer-contact {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+}
+
+.footer-contact p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.email-link {
+    font-size: 2rem;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+}
+
+.email-link:hover {
+    opacity: 0.8;
+    border-bottom-color: rgba(255,255,255,0.8);
+}
+
+.social-links {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.separator {
+    margin: 0 1rem;
+    opacity: 0.3;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    opacity: 0.4;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsividade Footer e Serviços */
+@media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .email-link { font-size: 1.2rem; } /* Diminui o email no celular para não quebrar */
+    .footer-bottom { flex-direction: column; gap: 1rem; }
+}
+/* --- SOBRE (Duas Colunas) --- */
+.about-section {
+    padding: 8rem 4rem;
+    background-color: #F5F5F0; /* Fundo levemente diferente */
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr; /* Texto maior, foto menor */
+    gap: 6rem;
+    align-items: center;
+}
+
+.eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.about-text h2 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: #555;
+    max-width: 500px; /* Para o texto não ficar muito largo */
+}
+
+.signature {
+    font-family: 'Cormorant Garamond', serif; /* Ou uma fonte manuscrita se quiser */
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%); /* Foto P&B para ficar chique */
+}
+/* --- PROJETOS PRINCIPAIS (Alternados) --- */
+.main-projects {
+    padding: 6rem 0;
+}
+
+.project-row {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Imagem maior que texto */
+    align-items: center;
+    margin-bottom: 8rem; /* Espaço entre projetos */
+}
+
+/* Classe para inverter a ordem (Texto Esq, Imagem Dir) */
+.project-row.reverse {
+    grid-template-columns: 0.8fr 1.2fr;
+}
+.project-row.reverse .proj-img {
+    order: 2; /* Joga imagem para depois */
+}
+.project-row.reverse .proj-text {
+    order: 1;
+    padding-left: 4rem; /* Ajuste de padding */
+}
+
+.proj-img img {
+    width: 100%;
+    height: 600px; /* Altura fixa para alinhar */
+    object-fit: cover;
+}
+
+.proj-text {
+    padding: 0 4rem;
+}
+
+.proj-cat {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.proj-text h3 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.link-arrow {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid currentColor;
+}
+
+/* --- GALERIA DE PROJETOS (Mosaico) --- */
+.gallery-mosaic {
+    padding: 0 4rem 8rem 4rem;
+}
+
+.subtitle-section {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.mosaic-grid {
+    column-count: 3; 
+    column-gap: 2rem;
+}
+
+.mosaic-item {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.mosaic-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+/* Efeito Hover na Imagem */
+.mosaic-item:hover img {
+    transform: scale(1.05);
+}
+
+/* A Legenda com Comentários */
+.mosaic-item .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.9); /* Fundo escuro quase opaco para leitura */
+    color: #fff; /* Texto branco */
+    padding: 1.5rem; /* Mais espaço interno */
+    opacity: 0;
+    transform: translateY(20px); /* Começa um pouco descido */
+    transition: all 0.4s ease;
+}
+
+.mosaic-item:hover .caption {
+    opacity: 1;
+    transform: translateY(0); /* Sobe suavemente */
+}
+
+.caption h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.caption p {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #ccc; /* Cinza claro para o texto descritivo */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .mosaic-grid { column-count: 1; }
+    
+    /* No celular, talvez seja melhor mostrar a legenda sempre ou ajustar */
+    .mosaic-item .caption {
+        position: relative; /* Legenda fica embaixo da foto, não em cima */
+        background: #fff;
+        color: #000;
+        opacity: 1;
+        transform: none;
+        padding: 1rem 0;
+    }
+    .caption h4 { color: #000; }
+    .caption p { color: #666; }
+}
+
+/* --- SERVIÇOS SPLIT --- */
+.service-split {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 0;
+}
+
+.service-col {
+    flex: 1;
+    padding: 0 4rem;
+}
+
+.vertical-line {
+    width: 1px;
+    background-color: #ddd;
+}
+
+.service-col h3 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-desc {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 3rem;
+}
+
+.service-list {
+    list-style: none;
+}
+
+.service-list li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
